@@ -4,11 +4,12 @@ import express from "express";
 import { createServer } from "http";
 import { initHttp } from "./http";
 import cors from "cors";
+import { initWs } from "./ws";
 
 const app = express();
 app.use(cors());
 const httpServer = createServer(app);
-
+initWs(httpServer);
 initHttp(app);
 
 const port = process.env.PORT || 3001;
